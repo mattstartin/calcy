@@ -19,7 +19,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "rm -rf tsconfig.json && PORT=8000 react-scripts start",
+    "start": "rm -rf tsconfig.json && cp base-tsconfig.json tsconfig.json && PORT=8000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test \"--coverage\"",
     "eject": "react-scripts eject"
