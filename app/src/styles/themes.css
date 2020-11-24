@@ -1,0 +1,7 @@
+body { background-color: grey; font-family: Verdana, Geneva, Tahoma, sans-serif; }
+input { margin-left: 1vh;}
+ul { list-style-type: none;}
+
+.header { background-color: white; border: solid 1px black; padding:4vh; margin: 2vh; text-align: center; font-size: x-large;}
+.content { background-color: white; border: solid 1px black; padding:4vh; margin: 2vh; }
+.label { min-width: 50% ;}

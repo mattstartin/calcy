@@ -1,5 +1,6 @@
 import React from 'react';
 import Calculate from '../helpers/calculate';
+import '../styles/themes.css'
 
 export interface CalculatorState { 
     value: string, answer: string | null, valid: boolean, history: string[]
@@ -20,16 +21,16 @@ export default class Calculator extends React.Component<{},CalculatorState> {
     render() {
         return (
             <>
-                <div id="header">Calcy</div>
-                <label id="label">
-                    Enter Calculation:
+                <div id="header" className="header">Calcy</div>
+                <div className="content">
+                    <label id="label">Calculation </label>
                     <input id="calculatorInput" type="text" value={this.state.value} onChange={this.handleChange} onKeyDown={this.handleKeyDown} />
-                </label>
-                <input id="calculatorButton" type="button" value="Go" disabled={!this.state.valid} onClick={this.handleClick} />
-                <br />
-                {this.renderAnswer()}
-                <br />
-                {this.renderHistory()}
+                    <input id="calculatorButton" type="button" value="Go" disabled={!this.state.valid} onClick={this.handleClick} />
+                    <br />
+                    {this.renderAnswer()}
+                    <br />
+                    {this.renderHistory()}
+                </div>
             </>
         )
     }
@@ -54,8 +55,8 @@ export default class Calculator extends React.Component<{},CalculatorState> {
         return (
             this.state.answer && (
                 <label id="answerLabel">
-                    Answer:
-                    <textarea id="calculatorOutput" readOnly value={this.state.answer}></textarea>
+                    Answer
+                    <input id="calculatorOutput" readOnly value={this.state.answer}></input>
                 </label>
             )
         )
@@ -65,7 +66,7 @@ export default class Calculator extends React.Component<{},CalculatorState> {
 
         return ( history.length > 0 && 
             <label id="historyLabel">
-                History:
+                History
                 <ul id="calculatorHistory" style={{transform:"rotate(180deg)"}}>
                     {history.slice(-50).map(function(item, idx){
                         let content = (idx+1) + ": " + item
