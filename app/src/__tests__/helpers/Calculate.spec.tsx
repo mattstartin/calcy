@@ -137,6 +137,7 @@ describe('isValid', () => {
     ${"1-1"} | ${true}
     ${"1*1"} | ${true}
     ${"(1*1)"} | ${true}
+    ${"(1.1*2.4+4)"} | ${true}
     ${"7/1"} | ${false}
     ${"74a"} | ${false}
     ${"bfbdb"} | ${false}

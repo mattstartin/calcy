@@ -7,7 +7,7 @@ export default class Calculate {
 
     public static isValid(calculation: string): boolean {
 
-        return /^[0-9\+\-\*\(\)]*$/.test(calculation)
+        return /^[0-9\.\+\-\*\(\)]*$/.test(calculation)
     }
   
 }
