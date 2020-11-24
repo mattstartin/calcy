@@ -23,7 +23,7 @@ export default class Calculator extends React.Component<{},CalculatorState> {
                 <div id="header">Calcy</div>
                 <label id="label">
                     Enter Calculation:
-                    <input id="calculatorInput" type="text" value={this.state.value} onChange={this.handleChange} />
+                    <input id="calculatorInput" type="text" value={this.state.value} onChange={this.handleChange} onKeyDown={this.handleKeyDown} />
                 </label>
                 <input id="calculatorButton" type="button" value="Go" disabled={!this.state.valid} onClick={this.handleClick} />
                 <br />
@@ -44,6 +44,12 @@ export default class Calculator extends React.Component<{},CalculatorState> {
     handleChange(event: any) {
         this.setState({value: event.target.value, valid: Calculate.isValid(event.target.value) });
     }
+
+    handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+        if (event.key === 'Enter') 
+            this.handleClick(event)
+    }
+  
     renderAnswer() {
         return (
             this.state.answer && (

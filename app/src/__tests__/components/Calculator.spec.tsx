@@ -239,4 +239,41 @@ describe('<Calculator />',() => {
             expect(state.history[0]).toEqual("10-5=123.45")
         })
     })
+    describe('handleKeyDown', () => {
+        test('Enter performs calculation', () => {
+            Calculate.doCalculate = jest.fn().mockReturnValue("50")
+
+            let component = mount(<Calculator />)
+            component.setState({value: "10*5", valid: true})
+
+            let input = component.find('#calculatorInput')
+            let keydownHandler:any = input.props().onKeyDown
+
+            keydownHandler({key: "Enter"})
+
+            let state: CalculatorState = component.state() as CalculatorState
+            expect(state.value).toEqual('10*5')
+            expect(state.answer).toEqual('50')
+            expect(state.valid).toBeTruthy()
+
+            expect(Calculate.doCalculate).toHaveBeenCalledTimes(1)
+        })
+        test('Changing text value sets validity from helper', () => {
+
+            let component = mount(<Calculator />)
+            component.setState({value: "10*5", valid: true, answer: null})
+
+            let input = component.find('#calculatorInput')
+            let keydownHandler:any = input.props().onKeyDown
+
+            keydownHandler({key: "q"})
+
+            expect(Calculate.doCalculate).toHaveBeenCalledTimes(0)
+            
+            let state: CalculatorState = component.state() as CalculatorState
+            expect(state.value).toEqual('10*5')
+            expect(state.answer).toEqual(null)
+            expect(state.valid).toBeTruthy()
+        })
+    })
 })
