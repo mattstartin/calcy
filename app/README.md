@@ -1,4 +1,11 @@
-# Getting Started with Create React App
+# Getting Started
+Clone repo
+npm install
+npm start
+App should run on port 8000
+
+# Tests
+npm test
 
 Notes:
 Because of an issue with react-scripts & typescript, the following will have to be manually changed:
