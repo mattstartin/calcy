@@ -120,6 +120,22 @@ describe('<Calculator />',() => {
             expect(output.childAt(49).props().children).toEqual('50: 74')
         }); 
 
+        test('History is reverse ordered', () => {
+            let component = mount(<Calculator />)
+            
+            let history: string[] = []
+            Array.from({length: 5},(_,idx) => history.push(idx.toString()))
+            component.setState({history: history})
+ 
+            let output = component.find('#calculatorHistory')
+            expect(output.prop('style')).toEqual({transform:"rotate(180deg)"})
+  
+            expect(component.find('#history_0').prop('style')).toEqual({transform:"rotate(-180deg)"})
+            expect(component.find('#history_4').prop('style')).toEqual({transform:"rotate(-180deg)"})
+  
+           
+        })
+
     })
 
     describe('handleChange', () => {

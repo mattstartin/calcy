@@ -60,10 +60,10 @@ export default class Calculator extends React.Component<{},CalculatorState> {
         return ( history.length > 0 && 
             <label id="historyLabel">
                 History:
-                <ul id="calculatorHistory">
+                <ul id="calculatorHistory" style={{transform:"rotate(180deg)"}}>
                     {history.slice(-50).map(function(item, idx){
                         let content = (idx+1) + ": " + item
-                        return (<li id={`history_${idx}`} key={idx}>{content}</li>)
+                        return (<li id={`history_${idx}`} key={idx} style={{transform:"rotate(-180deg)"}}>{content}</li>)
                         
                     })}
                 </ul>
